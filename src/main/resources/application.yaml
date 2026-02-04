@@ -1,0 +1,43 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: notification-service
+
+  datasource:
+    # localhost ki jagah postgres-db container name use kiya hai
+    url: jdbc:postgresql://postgres-db:5432/ecoride_db
+    username: postgres
+    password: sourabh@2003
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sourabhmahajan1111@gmail.com
+    password: jzljhtisodmirzsf
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+  client:
+    service-url:
+      # localhost ki jagah service-registry container name use kiya hai
+      defaultZone: http://service-registry:8761/eureka/
